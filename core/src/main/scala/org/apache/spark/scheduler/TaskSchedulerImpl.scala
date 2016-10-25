@@ -254,6 +254,7 @@ private[spark] class TaskSchedulerImpl(
       availableCpus: Array[Int],
       tasks: IndexedSeq[ArrayBuffer[TaskDescription]]) : Boolean = {
     var launchedTask = false
+    // should debug here for offers
     for (i <- 0 until shuffledOffers.size) {
       val execId = shuffledOffers(i).executorId
       val host = shuffledOffers(i).host
@@ -307,9 +308,9 @@ private[spark] class TaskSchedulerImpl(
     }
 
     // Randomly shuffle offers to avoid always placing tasks on the same set of workers.
-    val shuffledOffers = Random.shuffle(offers)
+    val shuffledOffers: IndexedSeq[WorkerOffer] = Random.shuffle(offers)
     // Build a list of tasks to assign to each worker.
-    val tasks = shuffledOffers.map(o => new ArrayBuffer[TaskDescription](o.cores))
+    val tasks: IndexedSeq[ArrayBuffer[TaskDescription]] = shuffledOffers.map(o => new ArrayBuffer[TaskDescription](o.cores))
     val availableCpus = shuffledOffers.map(o => o.cores).toArray
     val sortedTaskSets = rootPool.getSortedTaskSetQueue
     for (taskSet <- sortedTaskSets) {
