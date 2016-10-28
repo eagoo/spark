@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.spark.scheduler.TaskSchedulerImpl</OriginalElement>
+  <nodes>
+    <node x="343.91666666666674" y="103.0">org.apache.spark.scheduler.TaskSchedulerImpl</node>
+    <node x="166.9166666666667" y="126.5">org.apache.spark.scheduler.SchedulerBackend</node>
+    <node x="464.0" y="581.5">org.apache.spark.scheduler.Pool</node>
+    <node x="388.9166666666668" y="0.0">org.apache.spark.scheduler.TaskScheduler</node>
+    <node x="224.75" y="467.0">org.apache.spark.scheduler.Schedulable</node>
+    <node x="0.0" y="570.0">org.apache.spark.scheduler.TaskSetManager</node>
+    <node x="0.0" y="276.0">org.apache.spark.scheduler.cluster.CoarseGrainedSchedulerBackend</node>
+  </nodes>
+  <notes>
+    <note x="24.916666666666742" y="150.0">
+      <node>org.apache.spark.scheduler.cluster.CoarseGrainedSchedulerBackend</node>
+      <value>has TaskScheduler</value>
+      <edge>
+        <point x="-165.66666666666663" y="-73.0" />
+        <point x="82.83333333333337" y="251.0" />
+        <point x="85.91666666666674" y="251.0" />
+        <point x="0.0" y="14.5" />
+      </edge>
+    </note>
+  </notes>
+  <edges>
+    <edge source="org.apache.spark.scheduler.TaskSetManager" target="org.apache.spark.scheduler.Schedulable">
+      <point x="0.0" y="-61.5" />
+      <point x="222.0" y="545.0" />
+      <point x="314.5" y="545.0" />
+      <point x="-89.75" y="26.5" />
+    </edge>
+    <edge source="org.apache.spark.scheduler.cluster.CoarseGrainedSchedulerBackend" target="org.apache.spark.scheduler.TaskSchedulerImpl">
+      <point x="165.66666666666663" y="-73.0" />
+      <point x="414.16666666666663" y="251.0" />
+      <point x="499.91666666666674" y="251.0" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="org.apache.spark.scheduler.cluster.CoarseGrainedSchedulerBackend" target="org.apache.spark.scheduler.SchedulerBackend">
+      <point x="2.8421709430404007E-14" y="-73.0" />
+      <point x="248.50000000000003" y="251.0" />
+      <point x="245.4166666666667" y="251.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="org.apache.spark.scheduler.TaskSchedulerImpl" target="org.apache.spark.scheduler.TaskScheduler">
+      <point x="5.6843418860808015E-14" y="-61.5" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="org.apache.spark.scheduler.Pool" target="org.apache.spark.scheduler.Schedulable">
+      <point x="0.0" y="-50.0" />
+      <point x="586.5" y="545.0" />
+      <point x="494.0" y="545.0" />
+      <point x="89.75" y="26.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8932853717026379" x="358.0" y="367.0" />
+  <SelectedNodes>
+    <node>org.apache.spark.scheduler.cluster.CoarseGrainedSchedulerBackend</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
