@@ -400,6 +400,7 @@ class DAGScheduler(
   }
 
   /**
+    * 得到rdd最近的父shuffle依赖
    * Returns shuffle dependencies that are immediate parents of the given RDD.
    *
    * This function will not return more distant ancestors.  For example, if C has a shuffle
