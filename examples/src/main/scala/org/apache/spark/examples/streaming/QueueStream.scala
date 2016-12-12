@@ -18,9 +18,9 @@
 package org.apache.spark.examples.streaming
 
 import scala.collection.mutable.Queue
-
 import org.apache.spark.SparkConf
 import org.apache.spark.rdd.RDD
+import org.apache.spark.streaming.dstream.DStream
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object QueueStream {
@@ -38,15 +38,19 @@ object QueueStream {
 
     // Create the QueueInputDStream and use it do some processing
     val inputStream = ssc.queueStream(rddQueue)
-    val mappedStream = inputStream.map(x => (x % 10, 1))
-    val reducedStream = mappedStream.reduceByKey(_ + _)
-    reducedStream.print()
+    val mappedStream: DStream[String] = inputStream.map(x => {
+      import scala.sys.process._
+      "echo a".!!
+    })
+    /*val reducedStream = mappedStream.reduceByKey(_ + _)
+    reducedStream.print()*/
+    mappedStream.print()
     ssc.start()
 
     // Create and push some RDDs into rddQueue
-    for (i <- 1 to 30) {
+    while (true) {
       rddQueue.synchronized {
-        rddQueue += ssc.sparkContext.makeRDD(1 to 1000, 10)
+        rddQueue += ssc.sparkContext.makeRDD(1 to 1, 1)
       }
       Thread.sleep(1000)
     }
